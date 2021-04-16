@@ -28,7 +28,8 @@ repository.
 
 ## Test Mode
 
-TBD
+If you want to run the test suites, copy the `phpunit.xml.dist` file to `phpunit.xml` and update the following values:
+- 
 
 ## Support
 

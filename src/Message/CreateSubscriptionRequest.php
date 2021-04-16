@@ -1,10 +1,9 @@
 <?php
 
-namespace Omnipay\eProcessingNetwork\Request;
+namespace Omnipay\eProcessingNetwork\Message;
 
 use Omnipay\Common\Message\RequestInterface;
 use Omnipay\eProcessingNetwork\Helpers\Schedule;
-use Psr\Http\Message\ResponseInterface;
 
 class CreateSubscriptionRequest extends AbstractRequest
 {
@@ -22,14 +21,15 @@ class CreateSubscriptionRequest extends AbstractRequest
             'RequestType' => $this->requestType,
             'TranType' => $this->tranType,
             'Total' => $this->getTotal(),
-            'Address' => trim($this->getCard()->getBillingAddress1().' '.$this->getCard()->getBillingAddress2()),
+            'Address' => trim($this->getCard()->getBillingAddress1() . ' ' . $this->getCard()->getBillingAddress2()),
             'Zip' => $this->getCard()->getBillingPostcode(),
             'CardNo' => $this->getCard()->getNumber(),
             'ExpMonth' => $this->getCard()->getExpiryMonth(),
             'ExpYear' => $this->getCard()->getExpiryYear(),
             'CVV2Type' => '1',
             'CVV2' => $this->getCard()->getCvv(),
-            'RecurMethodID' => '0', // Submit the value "0" to indicate you are creating a recurring transaction on the fly
+            'RecurMethodID' => '0',
+            // Submit the value "0" to indicate you are creating a recurring transaction on the fly
             'Identifier' => $this->getName(),
             'RCRRecurAmount' => $this->getTotal(),
             'RCRRecurs' => $this->getSchedule()->getOccurrences(),

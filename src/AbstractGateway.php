@@ -1,21 +1,12 @@
 <?php
 
-namespace Omnipay\ePaymentProcessor;
+namespace Omnipay\eProcessingNetwork;
 
 use Omnipay\Common\AbstractGateway as OmniAbstractGateway;
 use Omnipay\Common\GatewayInterface;
 
 abstract class AbstractGateway extends OmniAbstractGateway
 {
-    public function getDefaultParameters(): array
-    {
-        return [
-            'ePNAccount' => null,
-            'RestrictKey' => null,
-            'RequestType' => null,
-        ];
-    }
-
     /**
      * Get the merchant's eProcessingNetwork account number.
      *

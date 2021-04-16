@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\eProcessingNetwork\Request;
+namespace Omnipay\eProcessingNetwork\Message;
 
 use Omnipay\Common\Message\AbstractRequest as OmnipayAbstractRequest;
 use Psr\Http\Message\ResponseInterface;

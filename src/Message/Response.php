@@ -1,6 +1,6 @@
 <?php
 
-namespace Omnipay\eProcessingNetwork\Request;
+namespace Omnipay\eProcessingNetwork\Message;
 
 use Omnipay\Common\Message\AbstractResponse as OmnipayAbstractResponse;
 
@@ -46,7 +46,7 @@ class Response extends OmnipayAbstractResponse
      *
      * @return string
      */
-    public function getRecurringId(): string
+    public function getSubscriptionId(): string
     {
         return $this->getValue('RecurID');
     }

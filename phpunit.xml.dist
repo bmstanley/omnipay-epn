@@ -19,4 +19,8 @@
             <directory>./src</directory>
         </whitelist>
     </filter>
+    <php>
+        <server name="EPN_ACCOUNT" value="1234"/>
+        <server name="RESTRICT_KEY" value="supersecretkey"/>
+    </php>
 </phpunit>

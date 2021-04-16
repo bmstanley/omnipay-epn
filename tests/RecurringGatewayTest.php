@@ -1,11 +1,13 @@
 <?php
 namespace Omnipay\CreditCardPaymentProcessor;
 
+use Omnipay\eProcessingNetwork\Message\CreateSubscriptionRequest;
+use Omnipay\eProcessingNetwork\RecurringGateway;
 use Omnipay\Tests\GatewayTestCase;
 
 class RecurringGatewayTest extends GatewayTestCase
 {
-    /** @var RecurringGateway */
+    /** @var \Omnipay\eProcessingNetwork\RecurringGateway */
     protected $gateway;
 
     public function setUp(): void
@@ -14,11 +16,14 @@ class RecurringGatewayTest extends GatewayTestCase
 
         $this->gateway = new RecurringGateway($this->getHttpClient(), $this->getHttpRequest());
 
-        $this->gateway->setAccountNumber('merchant_123')->setKey('secret_test');
+        $this->gateway->setAccountNumber(getenv('EPN_ACCOUNT'))->setKey(getenv('RESTRICT_KEY'));
     }
 
-    protected function tearDown(): void
+    public function testCreateSubscription(): void
     {
-        $this->gateway = null;
+        $request = $this->gateway->createSubscription(['amount' => '10.00']);
+
+        self::assertInstanceOf(CreateSubscriptionRequest::class, $request);
+        self::assertSame('10.00', $request->getAmount());
     }
 }
