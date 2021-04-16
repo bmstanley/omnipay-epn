@@ -29,7 +29,8 @@ repository.
 ## Test Mode
 
 If you want to run the test suites, copy the `phpunit.xml.dist` file to `phpunit.xml` and update the following values:
-- 
+- EPN_ACCOUNT
+- RESTRICT_KEY
 
 ## Support
 
