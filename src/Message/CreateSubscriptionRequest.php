@@ -4,14 +4,20 @@ namespace Omnipay\eProcessingNetwork\Request;
 
 use Omnipay\Common\Message\RequestInterface;
 use Omnipay\eProcessingNetwork\Helpers\Schedule;
+use Psr\Http\Message\ResponseInterface;
 
 class CreateSubscriptionRequest extends AbstractRequest
 {
+    protected string $url = 'https://www.eprocessingnetwork.com/cgi-bin/epn/secure/tdbe/transact.pl';
     protected string $requestType = 'transaction';
     protected string $tranType = 'sale';
 
     public function getData(): array
     {
+        if ($this->getTestMode()) {
+            // todo do something here to ensure a test card will be sent
+        }
+
         return [
             'RequestType' => $this->requestType,
             'TranType' => $this->tranType,

@@ -1,4 +1,5 @@
 <?php
+
 namespace Omnipay\CreditCardPaymentProcessor;
 
 use Omnipay\Common\Message\RequestInterface;
