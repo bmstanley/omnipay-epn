@@ -48,25 +48,4 @@ abstract class AbstractGateway extends OmniAbstractGateway
     {
         return $this->setParameter('RestrictKey', $restrictKey);
     }
-
-    /**
-     * Get the request type
-     *
-     * @return string|null
-     */
-    public function getRequestType(): ?string
-    {
-        return $this->getParameter('RequestType');
-    }
-
-    /**
-     * Set the request type
-     *
-     * @param string $requestType
-     * @return \Omnipay\Common\GatewayInterface
-     */
-    public function setRequestType(string $requestType): GatewayInterface
-    {
-        return $this->setParameter('RequestType', $requestType);
-    }
 }
