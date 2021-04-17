@@ -7,7 +7,10 @@ use Psr\Http\Message\ResponseInterface;
 
 abstract class AbstractRequest extends OmnipayAbstractRequest
 {
-    protected string $url;
+    /**
+     * @var string
+     */
+    protected $url;
 
     /**
      * @throws \JsonException
@@ -18,7 +21,7 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
             $method,
             $this->url,
             ['Content-Type' => 'application/json'],
-            json_encode($data, JSON_THROW_ON_ERROR)
+            json_encode($data)
         );
     }
 
@@ -29,6 +32,6 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
     {
         $response = $this->sendRequest($data);
         $body = (string)($response->getBody());
-        return new Response($this, json_decode($body, true, 512, JSON_THROW_ON_ERROR));
+        return new Response($this, json_decode($body, true));
     }
 }

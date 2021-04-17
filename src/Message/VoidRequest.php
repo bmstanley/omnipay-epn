@@ -4,9 +4,18 @@ namespace Omnipay\eProcessingNetwork\Message;
 
 class VoidRequest extends AbstractRequest
 {
-    protected string $url = 'https://www.eprocessingnetwork.com/cgi-bin/epn/secure/tdbe/transact.pl';
-    protected string $requestType = 'transaction';
-    protected string $tranType = 'Void';
+    /**
+     * @var string
+     */
+    protected $url = 'https://www.eprocessingnetwork.com/cgi-bin/epn/secure/tdbe/transact.pl';
+    /**
+     * @var string
+     */
+    protected $requestType = 'transaction';
+    /**
+     * @var string
+     */
+    protected $tranType = 'Void';
 
     /**
      * @throws \Omnipay\Common\Exception\InvalidRequestException

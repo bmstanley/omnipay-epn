@@ -4,8 +4,14 @@ namespace Omnipay\eProcessingNetwork\Message;
 
 class GetSubscriptionStatusRequest extends AbstractRequest
 {
-    protected string $url = 'https://www.eprocessingnetwork.com/cgi-bin/epn/secure/tdbe/status.pl';
-    protected string $requestType = 'status';
+    /**
+     * @var string
+     */
+    protected $url = 'https://www.eprocessingnetwork.com/cgi-bin/epn/secure/tdbe/status.pl';
+    /**
+     * @var string
+     */
+    protected $requestType = 'status';
 
     /**
      * @throws \Omnipay\Common\Exception\InvalidRequestException

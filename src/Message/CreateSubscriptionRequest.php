@@ -12,9 +12,18 @@ class CreateSubscriptionRequest extends AbstractRequest
     use HasCreditCardData;
     use HasSubscriptionData;
 
-    protected string $url = 'https://www.eprocessingnetwork.com/cgi-bin/epn/secure/tdbe/transact.pl';
-    protected string $requestType = 'transaction';
-    protected string $tranType = 'Sale';
+    /**
+     * @var string
+     */
+    protected $url = 'https://www.eprocessingnetwork.com/cgi-bin/epn/secure/tdbe/transact.pl';
+    /**
+     * @var string
+     */
+    protected $requestType = 'transaction';
+    /**
+     * @var string
+     */
+    protected $tranType = 'Sale';
 
     /**
      * @throws \Omnipay\Common\Exception\InvalidRequestException

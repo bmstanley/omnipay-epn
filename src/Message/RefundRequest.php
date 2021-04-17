@@ -6,9 +6,18 @@ use Omnipay\Common\CreditCard;
 
 class RefundRequest extends AbstractRequest
 {
-    protected string $url = 'https://www.eprocessingnetwork.com/cgi-bin/epn/secure/tdbe/transact.pl';
-    protected string $requestType = 'transaction';
-    protected string $tranType = 'Return';
+    /**
+     * @var string
+     */
+    protected $url = 'https://www.eprocessingnetwork.com/cgi-bin/epn/secure/tdbe/transact.pl';
+    /**
+     * @var string
+     */
+    protected $requestType = 'transaction';
+    /**
+     * @var string
+     */
+    protected $tranType = 'Return';
 
     /**
      * @throws \Omnipay\Common\Exception\InvalidRequestException

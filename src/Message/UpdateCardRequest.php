@@ -4,14 +4,25 @@ namespace Omnipay\eProcessingNetwork\Message;
 
 use Omnipay\Common\Message\RequestInterface;
 use Omnipay\eProcessingNetwork\Message\Concerns\HasCreditCardData;
+use Omnipay\eProcessingNetwork\Message\Concerns\HasSubscriptionData;
 
 class UpdateCardRequest extends AbstractRequest
 {
     use HasCreditCardData;
+    use HasSubscriptionData;
 
-    protected string $url = 'https://www.eprocessingnetwork.com/cgi-bin/epn/secure/tdbe/recur.pl';
-    protected string $requestType = 'recur';
-    protected string $tranType = 'ModifyCreditCard';
+    /**
+     * @var string
+     */
+    protected $url = 'https://www.eprocessingnetwork.com/cgi-bin/epn/secure/tdbe/recur.pl';
+    /**
+     * @var string
+     */
+    protected $requestType = 'recur';
+    /**
+     * @var string
+     */
+    protected $tranType = 'ModifyCreditCard';
 
     /**
      * @throws \Omnipay\Common\Exception\InvalidRequestException
@@ -30,26 +41,5 @@ class UpdateCardRequest extends AbstractRequest
                 'RecurID' => $this->getSubscriptionId(),
             ]
         );
-    }
-
-    /**
-     * Get the subscription plan name.
-     *
-     * @return string|null
-     */
-    public function getSubscriptionId(): ?string
-    {
-        return $this->getParameter('subscriptionId');
-    }
-
-    /**
-     * Set the subscription ID.
-     *
-     * @param string $subscriptionId
-     * @return \Omnipay\Common\Message\RequestInterface
-     */
-    public function setSubscriptionId(string $subscriptionId): RequestInterface
-    {
-        return $this->setParameter('subscriptionId', $subscriptionId);
     }
 }

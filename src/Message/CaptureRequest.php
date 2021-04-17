@@ -4,9 +4,18 @@ namespace Omnipay\eProcessingNetwork\Message;
 
 class CaptureRequest extends AbstractRequest
 {
-    protected string $url = 'https://www.eprocessingnetwork.com/cgi-bin/epn/secure/tdbe/transact.pl';
-    protected string $requestType = 'transaction';
-    protected string $tranType = 'Auth2Sale';
+    /**
+     * @var string
+     */
+    protected $url = 'https://www.eprocessingnetwork.com/cgi-bin/epn/secure/tdbe/transact.pl';
+    /**
+     * @var string
+     */
+    protected $requestType = 'transaction';
+    /**
+     * @var string
+     */
+    protected $tranType = 'Auth2Sale';
 
     /**
      * @throws \Omnipay\Common\Exception\InvalidRequestException

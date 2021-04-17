@@ -15,9 +15,18 @@ class Schedule
     public const INTERVAL_BIANNUALLY = '6Months';
     public const INTERVAL_ANNUALLY = '12Months';
 
-    protected string $interval;
-    protected DateTime $startDate;
-    protected int $occurrences = 0; // Process the recur until it is explicitly canceled
+    /**
+     * @var string
+     */
+    protected $interval;
+    /**
+     * @var \DateTime
+     */
+    protected $startDate;
+    /**
+     * @var int
+     */
+    protected $occurrences = 0; // Process the recur until it is explicitly canceled
 
     /**
      * @throws \Omnipay\Common\Exception\InvalidRequestException
