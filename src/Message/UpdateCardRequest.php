@@ -3,25 +3,33 @@
 namespace Omnipay\eProcessingNetwork\Message;
 
 use Omnipay\Common\Message\RequestInterface;
+use Omnipay\eProcessingNetwork\Message\Concerns\HasCreditCardData;
 
 class UpdateCardRequest extends AbstractRequest
 {
+    use HasCreditCardData;
+
     protected string $url = 'https://www.eprocessingnetwork.com/cgi-bin/epn/secure/tdbe/recur.pl';
     protected string $requestType = 'recur';
     protected string $tranType = 'ModifyCreditCard';
 
+    /**
+     * @throws \Omnipay\Common\Exception\InvalidRequestException
+     */
     public function getData(): array
     {
-        return [
-            'RequestType' => $this->requestType,
-            'TranType' => $this->tranType,
-            'CardNo' => $this->getCard()->getNumber(),
-            'ExpMonth' => $this->getCard()->getExpiryMonth(),
-            'ExpYear' => $this->getCard()->getExpiryYear(),
-            'CVV2Type' => '1',
-            'CVV2' => $this->getCard()->getCvv(),
-            'RecurID' => $this->getSubscriptionId(),
-        ];
+        $this->validate('card', 'subscriptionId');
+
+        return array_merge(
+            [
+                'RequestType' => $this->requestType,
+                'TranType' => $this->tranType,
+            ],
+            $this->getCreditCardData(),
+            [
+                'RecurID' => $this->getSubscriptionId(),
+            ]
+        );
     }
 
     /**

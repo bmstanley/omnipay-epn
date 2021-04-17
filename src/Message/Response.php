@@ -18,7 +18,7 @@ class Response extends OmnipayAbstractResponse
      */
     public function getTransactionReference(): ?string
     {
-        return $this->getValue('Tran_token');
+        return $this->getValue('XactID');
     }
 
     /**
@@ -28,7 +28,7 @@ class Response extends OmnipayAbstractResponse
      */
     public function getTransactionId(): string
     {
-        return $this->getValue('XactID');
+        return $this->getValue('Tran_token');
     }
 
     /**

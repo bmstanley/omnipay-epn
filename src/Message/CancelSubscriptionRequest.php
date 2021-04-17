@@ -2,41 +2,27 @@
 
 namespace Omnipay\eProcessingNetwork\Message;
 
-use Omnipay\Common\Message\RequestInterface;
+use Omnipay\eProcessingNetwork\Message\Concerns\HasSubscriptionData;
 
 class CancelSubscriptionRequest extends AbstractRequest
 {
+    use HasSubscriptionData;
+
     protected string $url = 'https://www.eprocessingnetwork.com/cgi-bin/epn/secure/tdbe/recur.pl';
     protected string $requestType = 'recur';
     protected string $tranType = 'Cancel';
 
+    /**
+     * @throws \Omnipay\Common\Exception\InvalidRequestException
+     */
     public function getData(): array
     {
+        $this->validate('subscriptionId');
+
         return [
             'RequestType' => $this->requestType,
             'TranType' => $this->tranType,
             'RecurID' => $this->getSubscriptionId(),
         ];
-    }
-
-    /**
-     * Get the subscription plan name.
-     *
-     * @return string|null
-     */
-    public function getSubscriptionId(): ?string
-    {
-        return $this->getParameter('subscriptionId');
-    }
-
-    /**
-     * Set the subscription ID.
-     *
-     * @param string $subscriptionId
-     * @return \Omnipay\Common\Message\RequestInterface
-     */
-    public function setSubscriptionId(string $subscriptionId): RequestInterface
-    {
-        return $this->setParameter('subscriptionId', $subscriptionId);
     }
 }
