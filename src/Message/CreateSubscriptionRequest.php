@@ -2,8 +2,6 @@
 
 namespace Omnipay\eProcessingNetwork\Message;
 
-use Omnipay\Common\Message\RequestInterface;
-use Omnipay\eProcessingNetwork\Helpers\Schedule;
 use Omnipay\eProcessingNetwork\Message\Concerns\HasAddressData;
 use Omnipay\eProcessingNetwork\Message\Concerns\HasCreditCardData;
 use Omnipay\eProcessingNetwork\Message\Concerns\HasSubscriptionData;

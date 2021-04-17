@@ -2,9 +2,6 @@
 
 namespace Omnipay\eProcessingNetwork\Message;
 
-use Omnipay\eProcessingNetwork\Message\Concerns\HasAddressData;
-use Omnipay\eProcessingNetwork\Message\Concerns\HasCreditCardData;
-
 class CompleteAuthorizeRequest extends AbstractRequest
 {
     protected string $url = 'https://www.eprocessingnetwork.com/cgi-bin/epn/secure/tdbe/transact.pl';
