@@ -5,9 +5,10 @@ namespace Omnipay\eProcessingNetwork\Message\Concerns;
 trait HasCreditCardData
 {
     /**
-     * The standard data set submitting a credit card
+     * The standard data set for submitting a credit card
      *
      * @return array
+     * @todo override card number when testing
      */
     protected function getCreditCardData(): array
     {
