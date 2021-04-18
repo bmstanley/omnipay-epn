@@ -122,11 +122,11 @@ class Gateway extends AbstractGateway
     protected function requestOptions(array $options = []): array
     {
         return array_merge(
+            $options,
             [
                 'ePNAccount' => $this->getAccountNumber(),
                 'RestrictKey' => $this->getRestrictKey(),
-            ],
-            $options
+            ]
         );
     }
 }
