@@ -7,12 +7,20 @@ use Omnipay\Common\GatewayInterface;
 
 abstract class AbstractGateway extends OmniAbstractGateway
 {
+    public function getDefaultParameters(): array
+    {
+        return [
+            'ePNAccount' => null,
+            'RestrictKey' => null,
+        ];
+    }
+
     /**
      * Get the merchant's eProcessingNetwork account number.
      *
      * @return string|null
      */
-    public function getAccountNumber(): ?string
+    public function getEpnAccount(): ?string
     {
         return $this->getParameter('ePNAccount');
     }
@@ -23,7 +31,7 @@ abstract class AbstractGateway extends OmniAbstractGateway
      * @param string $ePNAccount
      * @return \Omnipay\Common\GatewayInterface
      */
-    public function setAccountNumber(string $ePNAccount): GatewayInterface
+    public function setEpnAccount(string $ePNAccount): GatewayInterface
     {
         return $this->setParameter('ePNAccount', $ePNAccount);
     }
@@ -33,7 +41,7 @@ abstract class AbstractGateway extends OmniAbstractGateway
      *
      * @return string|null
      */
-    public function getKey(): ?string
+    public function getRestrictKey(): ?string
     {
         return $this->getParameter('RestrictKey');
     }
@@ -44,7 +52,7 @@ abstract class AbstractGateway extends OmniAbstractGateway
      * @param string $restrictKey
      * @return \Omnipay\Common\GatewayInterface
      */
-    public function setKey(string $restrictKey): GatewayInterface
+    public function setRestrictKey(string $restrictKey): GatewayInterface
     {
         return $this->setParameter('RestrictKey', $restrictKey);
     }
