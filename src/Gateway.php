@@ -35,7 +35,7 @@ class Gateway extends AbstractGateway
      */
     public function authorize(array $options = []): RequestInterface
     {
-        return $this->createRequest(AuthorizeRequest::class, $this->requestOptions($options));
+        return $this->createRequest(AuthorizeRequest::class, $options);
     }
 
     /**
@@ -44,7 +44,7 @@ class Gateway extends AbstractGateway
      */
     public function capture(array $options = []): RequestInterface
     {
-        return $this->createRequest(CaptureRequest::class, $this->requestOptions($options));
+        return $this->createRequest(CaptureRequest::class, $options);
     }
 
     /**
@@ -53,7 +53,7 @@ class Gateway extends AbstractGateway
      */
     public function completeAuthorize(array $options = []): RequestInterface
     {
-        return $this->createRequest(CompleteAuthorizeRequest::class, $this->requestOptions($options));
+        return $this->createRequest(CompleteAuthorizeRequest::class, $options);
     }
 
     /**
@@ -62,7 +62,7 @@ class Gateway extends AbstractGateway
      */
     public function purchase(array $options = []): RequestInterface
     {
-        return $this->createRequest(PurchaseRequest::class, $this->requestOptions($options));
+        return $this->createRequest(PurchaseRequest::class, $options);
     }
 
     /**
@@ -71,7 +71,7 @@ class Gateway extends AbstractGateway
      */
     public function refund(array $options = []): RequestInterface
     {
-        return $this->createRequest(RefundRequest::class, $this->requestOptions($options));
+        return $this->createRequest(RefundRequest::class, $options);
     }
 
     /**
@@ -80,7 +80,7 @@ class Gateway extends AbstractGateway
      */
     public function void(array $options = []): RequestInterface
     {
-        return $this->createRequest(VoidRequest::class, $this->requestOptions($options));
+        return $this->createRequest(VoidRequest::class, $options);
     }
 
     /**
@@ -89,7 +89,7 @@ class Gateway extends AbstractGateway
      */
     public function createSubscription(array $options = []): RequestInterface
     {
-        return $this->createRequest(CreateSubscriptionRequest::class, $this->requestOptions($options));
+        return $this->createRequest(CreateSubscriptionRequest::class, $options);
     }
 
     /**
@@ -98,7 +98,7 @@ class Gateway extends AbstractGateway
      */
     public function cancelSubscription(array $options = []): RequestInterface
     {
-        return $this->createRequest(CancelSubscriptionRequest::class, $this->requestOptions($options));
+        return $this->createRequest(CancelSubscriptionRequest::class, $options);
     }
 
     /**
@@ -107,7 +107,7 @@ class Gateway extends AbstractGateway
      */
     public function getSubscriptionStatus(array $options = []): RequestInterface
     {
-        return $this->createRequest(GetSubscriptionStatusRequest::class, $this->requestOptions($options));
+        return $this->createRequest(GetSubscriptionStatusRequest::class, $options);
     }
 
     /**
@@ -116,17 +116,6 @@ class Gateway extends AbstractGateway
      */
     public function updateCard(array $options = []): RequestInterface
     {
-        return $this->createRequest(UpdateCardRequest::class, $this->requestOptions($options));
-    }
-
-    protected function requestOptions(array $options = []): array
-    {
-        return array_merge(
-            $options,
-            [
-                'accountNumber' => $this->getAccountNumber(),
-                'restrictKey' => $this->getRestrictKey(),
-            ]
-        );
+        return $this->createRequest(UpdateCardRequest::class, $options);
     }
 }
