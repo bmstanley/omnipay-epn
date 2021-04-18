@@ -34,4 +34,14 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         $body = (string)($response->getBody());
         return new Response($this, json_decode($body, true));
     }
+
+    public function getAccount()
+    {
+        return $this->getParameter('ePNAccount');
+    }
+
+    public function getKey()
+    {
+        return $this->getParameter('RestrictKey');
+    }
 }
