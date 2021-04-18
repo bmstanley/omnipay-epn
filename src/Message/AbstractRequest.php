@@ -2,7 +2,6 @@
 
 namespace Omnipay\eProcessingNetwork\Message;
 
-use Omnipay\Common\GatewayInterface;
 use Omnipay\Common\Message\AbstractRequest as OmnipayAbstractRequest;
 use Omnipay\Common\Message\RequestInterface;
 use Psr\Http\Message\ResponseInterface;
@@ -39,8 +38,6 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
             'RestrictKey' => $this->getParameter('restrictKey'),
         ];
     }
-
-
 
     /**
      * Get the merchant's eProcessingNetwork account number.
