@@ -12,11 +12,9 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
      */
     protected $url;
 
-    /**
-     * @throws \JsonException
-     */
     protected function sendRequest($data, $method = 'POST'): ResponseInterface
     {
+        $data = array_merge($data ?? [], $this->getAuthData());
         return $this->httpClient->request(
             $method,
             $this->url,
@@ -25,9 +23,6 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         );
     }
 
-    /**
-     * @throws \JsonException
-     */
     public function sendData($data): \Omnipay\Common\Message\ResponseInterface
     {
         $response = $this->sendRequest($data);
@@ -35,13 +30,11 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
         return new Response($this, json_decode($body, true));
     }
 
-    public function getAccount()
+    public function getAuthData(): array
     {
-        return $this->getParameter('ePNAccount');
-    }
-
-    public function getKey()
-    {
-        return $this->getParameter('RestrictKey');
+        return [
+            'ePNAccount' => $this->getParameter('accountNumber'),
+            'RestrictKey' => $this->getParameter('restrictKey'),
+        ];
     }
 }

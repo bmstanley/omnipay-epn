@@ -124,8 +124,8 @@ class Gateway extends AbstractGateway
         return array_merge(
             $options,
             [
-                'ePNAccount' => $this->getAccountNumber(),
-                'RestrictKey' => $this->getRestrictKey(),
+                'accountNumber' => $this->getAccountNumber(),
+                'restrictKey' => $this->getRestrictKey(),
             ]
         );
     }
