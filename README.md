@@ -24,6 +24,31 @@ The following gateways are provided by this package:
 
 * [TDBE](https://www.eprocessingnetwork.com/tdbe_doc.html)
 
+The gateway requires your ePN Account Number and Restrict Key to be able to authorize your requests. You can configure the gateway by either passing your `accountNumber` and `restrictKey` via the gateway's `initialize` method or setter methods.
+
+via `initialize method`
+```php
+\Omnipay\Omnipay::register(\Omnipay\eProcessingNetwork\Gateway::class);
+$gateway = \Omnipay\Omnipay::create('eProcessingNetwork');
+$gateway->initialize([
+    'accountNumber' => 'your_epn_account_number',
+    'restrictKey' => 'your_restrict_key',
+]);
+```
+
+or via setter methods
+```php
+\Omnipay\Omnipay::register(\Omnipay\eProcessingNetwork\Gateway::class);
+$gateway = \Omnipay\Omnipay::create('eProcessingNetwork')
+    ->setAccountNumber('your_epn_account_number')
+    ->setRestrictKey('your_restrict_key');
+```
+
+Once the gateway is configured, you can create and send your request by calling the appropriate request method.
+```php
+$response = $gateway->purchase(['amount' => '10.00', 'card' => $card])->send();
+```
+
 For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay)
 repository.
 
