@@ -10,8 +10,8 @@ abstract class AbstractGateway extends OmniAbstractGateway
     public function getDefaultParameters(): array
     {
         return [
-            'ePNAccount' => null,
-            'RestrictKey' => null,
+            'ePNAccount' => '',
+            'RestrictKey' => '',
         ];
     }
 
