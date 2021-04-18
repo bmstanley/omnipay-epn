@@ -25,7 +25,7 @@ class GatewayTest extends GatewayTestCase
 
         $this->gateway = new Gateway($this->getHttpClient(), $this->getHttpRequest());
 
-        $this->gateway->setAccountNumber(getenv('EPN_ACCOUNT'))->setKey(getenv('RESTRICT_KEY'));
+        $this->gateway->setAccountNumber(getenv('EPN_ACCOUNT'))->setRestrictKey(getenv('RESTRICT_KEY'));
     }
 
     public function testAuthorizeReturnsRequest(): void
