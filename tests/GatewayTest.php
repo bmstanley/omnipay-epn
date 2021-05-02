@@ -1,5 +1,6 @@
 <?php
-namespace Omnipay\CreditCardPaymentProcessor;
+
+namespace Omnipay\eProcessingNetwork\Tests;
 
 use Omnipay\eProcessingNetwork\Message\AuthorizeRequest;
 use Omnipay\eProcessingNetwork\Message\CancelSubscriptionRequest;

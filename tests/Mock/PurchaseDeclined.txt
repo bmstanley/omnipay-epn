@@ -1,0 +1,21 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 02 May 2021 12:28:37 GMT
+Content-Type: application/json; charset=ISO-8859-1
+Expires: Sun, 02 May 2021 12:28:37 GMT
+X-Xss-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Content-Length: 275
+
+{
+    "CVV2Text": "CVV2 Match (M)",
+    "AVSText": "AVS Match 9 Digit Zip and Address (X)",
+    "CVV2Code": "M",
+    "RespText": "DECLINED",
+    "Tran_token": "DFDDFE7E-6C69-1014-9E9F-F42C44BE5CE2",
+    "Success": "N",
+    "XactID": "20210502073456-1234567-12-0",
+    "Invoice": "12",
+    "AVSCode": "X"
+}
