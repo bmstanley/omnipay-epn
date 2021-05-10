@@ -12,8 +12,8 @@ trait HasAddressData
     protected function getAddressData(): array
     {
         return [
-            'Address' => trim($this->getCard()->getBillingAddress1() . ' ' . $this->getCard()->getBillingAddress2()),
-            'Zip' => $this->getCard()->getBillingPostcode(),
+            'Address' => trim($this->getAddress1() . ' ' . $this->getAddress2()),
+            'Zip' => $this->getPostcode(),
         ];
     }
 }

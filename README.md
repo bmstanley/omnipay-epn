@@ -45,8 +45,14 @@ $gateway = \Omnipay\Omnipay::create('eProcessingNetwork')
 ```
 
 Once the gateway is configured, you can create and send your request by calling the appropriate request method.
+
+The `purchase()` method accepts an array containing the `amount` and one of either a `card` or `token`. If using a credit card, you must pass an `\Omnipay\Common\CreditCard`. If using a token (for a repeat transaction), you should pass an `XactID` (from calling `$response->getTransactionId()`) from a previous purchase response.
 ```php
 $response = $gateway->purchase(['amount' => '10.00', 'card' => $card])->send();
+```
+or
+```php
+$response = $gateway->purchase(['amount' => '10.00', 'token' => $previousResponse->getTransactionId()])->send();
 ```
 
 For general usage instructions, please see the main [Omnipay](https://github.com/thephpleague/omnipay)
