@@ -26,6 +26,10 @@ abstract class AbstractRequest extends OmnipayAbstractRequest
 
     public function sendData($data): \Omnipay\Common\Message\ResponseInterface
     {
+        if ($this->getTestMode() && method_exists($this, 'getTestResponseData')) {
+            return new Response($this, $this->getTestResponseData());
+        }
+
         $response = $this->sendRequest($data);
         $body = (string)($response->getBody());
         return new Response($this, json_decode($body, true));

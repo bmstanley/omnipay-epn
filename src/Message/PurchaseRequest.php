@@ -52,6 +52,22 @@ class PurchaseRequest extends AbstractRequest
         );
     }
 
+    public function getTestResponseData(): array
+    {
+        return [
+            'AVSText' => 'AVS Match 9 Digit Zip and Address (X)',
+            'CVV2Code' => 'M',
+            'AVSCode' => 'X',
+            'Invoice' => '11',
+            'XactID' => '20210502072836-1234567-11',
+            'Tran_token' => 'A886E4D0-6C69-1014-9F14-E3436113A1D0',
+            'Success' => 'Y',
+            'RespText' => 'APPROVED 311004',
+            'CVV2Text' => 'CVV2 Match (M)',
+            'AuthCode' => '3110044',
+        ];
+    }
+
     /**
      * Get the customer's billing address 1
      *
