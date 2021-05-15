@@ -8,7 +8,31 @@ class Response extends OmnipayAbstractResponse
 {
     public function getMessage(): string
     {
-        return $this->getValue('RespText');
+        if ($this->isSuccessful()) {
+            return $this->getValue('RespText');
+        }
+
+        return $this->getErrorMessage();
+    }
+
+    protected function getErrorMessage(): string
+    {
+        $responseText = $this->getValue('RespText');
+        switch ($responseText) {
+            case 'Amount Error':
+                return 'Invalid charge amount';
+            case 'Expired Card':
+                return 'The given credit card is expired';
+            case 'CVV Mismatch':
+                return 'Invalid security code';
+        }
+
+        // X and Y AVS Codes are success codes
+        if (!in_array($this->getValue('AVSCode'), ['X', 'Y'])) {
+            return $this->getValue('AVSText');
+        }
+
+        return $this->getValue('CVV2Text');
     }
 
     /**
