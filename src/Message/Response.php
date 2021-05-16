@@ -32,7 +32,12 @@ class Response extends OmnipayAbstractResponse
             return $this->getValue('AVSText');
         }
 
-        return $this->getValue('CVV2Text');
+        // X and Y AVS Codes are success codes
+        if ($this->getValue('CVV2Code') !== 'M') {
+            return $this->getValue('CVV2Text');
+        }
+
+        return 'The card was declined';
     }
 
     /**
