@@ -32,8 +32,7 @@ class Response extends OmnipayAbstractResponse
             return $this->getValue('AVSText');
         }
 
-        // X and Y AVS Codes are success codes
-        if ($this->getValue('CVV2Code') !== 'M') {
+        if ($this->getValue('CVV2Code') && $this->getValue('CVV2Code') !== 'M') {
             return $this->getValue('CVV2Text');
         }
 
