@@ -7,9 +7,8 @@ use Omnipay\eProcessingNetwork\Message\Concerns\HasCreditCardData;
 use Omnipay\eProcessingNetwork\Message\Concerns\HasCustomerData;
 use Omnipay\eProcessingNetwork\Message\Concerns\HasSubscriptionData;
 
-class UpdateCardRequest extends AbstractRequest
+class UpdateCustomerRequest extends AbstractRequest
 {
-    use HasCreditCardData;
     use HasCustomerData;
 
     /**
@@ -23,14 +22,14 @@ class UpdateCardRequest extends AbstractRequest
     /**
      * @var string
      */
-    protected $action = 'ModifyPayment';
+    protected $action = 'ModifyCustomer';
 
     /**
      * @throws \Omnipay\Common\Exception\InvalidRequestException
      */
     public function getData(): array
     {
-        $this->validate('card', 'customerId');
+        $this->validate('customerId', 'customerName', 'customerPhone', 'customerEmail', 'customerLocalIdentifier');
 
         return array_merge(
             [
@@ -38,7 +37,7 @@ class UpdateCardRequest extends AbstractRequest
                 'Action' => $this->action,
                 'CustomerID' => $this->getCustomerId(),
             ],
-            $this->getCreditCardData()
+            $this->getCustomerData()
         );
     }
 }

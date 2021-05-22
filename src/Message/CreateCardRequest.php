@@ -7,7 +7,7 @@ use Omnipay\eProcessingNetwork\Message\Concerns\HasCreditCardData;
 use Omnipay\eProcessingNetwork\Message\Concerns\HasCustomerData;
 use Omnipay\eProcessingNetwork\Message\Concerns\HasSubscriptionData;
 
-class UpdateCardRequest extends AbstractRequest
+class CreateCardRequest extends AbstractRequest
 {
     use HasCreditCardData;
     use HasCustomerData;
@@ -23,7 +23,7 @@ class UpdateCardRequest extends AbstractRequest
     /**
      * @var string
      */
-    protected $action = 'ModifyPayment';
+    protected $action = 'AddPayment';
 
     /**
      * @throws \Omnipay\Common\Exception\InvalidRequestException

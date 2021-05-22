@@ -2,16 +2,20 @@
 
 namespace Omnipay\eProcessingNetwork;
 
+use http\Env\Request;
 use Omnipay\Common\Message\RequestInterface;
 use Omnipay\eProcessingNetwork\Message\AuthorizeRequest;
 use Omnipay\eProcessingNetwork\Message\CancelSubscriptionRequest;
 use Omnipay\eProcessingNetwork\Message\CaptureRequest;
 use Omnipay\eProcessingNetwork\Message\CompleteAuthorizeRequest;
+use Omnipay\eProcessingNetwork\Message\CreateCardRequest;
+use Omnipay\eProcessingNetwork\Message\CreateCustomerRequest;
 use Omnipay\eProcessingNetwork\Message\CreateSubscriptionRequest;
 use Omnipay\eProcessingNetwork\Message\GetSubscriptionStatusRequest;
 use Omnipay\eProcessingNetwork\Message\PurchaseRequest;
 use Omnipay\eProcessingNetwork\Message\RefundRequest;
 use Omnipay\eProcessingNetwork\Message\UpdateCardRequest;
+use Omnipay\eProcessingNetwork\Message\UpdateCustomerRequest;
 use Omnipay\eProcessingNetwork\Message\VoidRequest;
 
 /**
@@ -114,8 +118,35 @@ class Gateway extends AbstractGateway
      * @param array $options
      * @return \Omnipay\Common\Message\RequestInterface
      */
+    public function createCard(array $options = []): RequestInterface
+    {
+        return $this->createRequest(CreateCardRequest::class, $options);
+    }
+
+    /**
+     * @param array $options
+     * @return \Omnipay\Common\Message\RequestInterface
+     */
     public function updateCard(array $options = []): RequestInterface
     {
         return $this->createRequest(UpdateCardRequest::class, $options);
+    }
+
+    /**
+     * @param array $options
+     * @return \Omnipay\Common\Message\RequestInterface
+     */
+    public function createCustomer(array $options = []): RequestInterface
+    {
+        return $this->createRequest(CreateCustomerRequest::class, $options);
+    }
+
+    /**
+     * @param array $options
+     * @return \Omnipay\Common\Message\RequestInterface
+     */
+    public function updateCustomer(array $options = []): RequestInterface
+    {
+        return $this->createRequest(UpdateCustomerRequest::class, $options);
     }
 }
