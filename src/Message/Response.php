@@ -85,10 +85,10 @@ class Response extends OmnipayAbstractResponse
     }
 
     /**
-     * @param string $key
+     * @param mixed|null $key
      * @return string|null
      */
-    protected function getValue(string $key): ?string
+    protected function getValue(string $key)
     {
         return $this->getData()[$key] ?? null;
     }
