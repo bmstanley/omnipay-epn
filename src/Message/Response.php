@@ -81,7 +81,15 @@ class Response extends OmnipayAbstractResponse
 
     public function isSuccessful(): bool
     {
-        return strcasecmp($this->getValue('Success'), 'y') === 0;
+        if ($this->getValue('Success')) {
+            return strcasecmp($this->getValue('Success'), 'y') === 0;
+        }
+
+        if ($this->getValue('status') !== null) {
+            return (int)$this->getValue('status') === 1;
+        }
+
+        return false;
     }
 
     /**
