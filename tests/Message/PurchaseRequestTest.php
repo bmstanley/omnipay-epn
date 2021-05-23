@@ -56,7 +56,7 @@ class PurchaseRequestTest extends TestCase
         self::assertFalse($response->isSuccessful());
         self::assertFalse($response->isRedirect());
         self::assertSame('20210502073456-1234567-12-0', $response->getTransactionId());
-        self::assertSame('DECLINED', $response->getMessage());
+        self::assertSame('The card was declined', $response->getMessage());
     }
 
     public function test_send_unable_to_process_with_card(): void
@@ -89,7 +89,7 @@ class PurchaseRequestTest extends TestCase
         self::assertFalse($response->isSuccessful());
         self::assertFalse($response->isRedirect());
         self::assertSame('20210502073456-1234567-12-0', $response->getTransactionId());
-        self::assertSame('DECLINED', $response->getMessage());
+        self::assertSame('The card was declined', $response->getMessage());
     }
 
     public function test_send_unable_to_process_with_token(): void
