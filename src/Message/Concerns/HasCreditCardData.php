@@ -13,10 +13,13 @@ trait HasCreditCardData
     protected function getCreditCardData(): array
     {
         return [
-            'Zip' => $this->getCard()->getBillingPostcode(),
             'CardNo' => $this->getCard()->getNumber(),
+            'CardNumber' => $this->getCard()->getNumber(),
+            'CardType' => $this->getCard()->getBrand(),
             'ExpMonth' => $this->getCard()->getExpiryMonth(),
+            'ExpireMonth' => $this->getCard()->getExpiryMonth(),
             'ExpYear' => $this->getCard()->getExpiryYear(),
+            'ExpireYear' => $this->getCard()->getExpiryYear(),
             'CVV2Type' => '1',
             'CVV2' => $this->getCard()->getCvv(),
         ];
