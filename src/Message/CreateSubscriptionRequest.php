@@ -39,7 +39,7 @@ class CreateSubscriptionRequest extends AbstractRequest
                 'Total' => $this->getAmount(),
             ],
             $this->getAddressData(),
-            $this->getCreditCardData(),
+            $this->getCreditCardTransactionData(),
             [
                 'RecurMethodID' => '0',
                 // Submit the value "0" to indicate you are creating a recurring transaction on the fly

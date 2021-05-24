@@ -33,7 +33,7 @@ class PurchaseRequest extends AbstractRequest
 
         if ($this->getParameter('card')) {
             $this->validate('card');
-            $paymentMethod = $this->getCreditCardData();
+            $paymentMethod = $this->getCreditCardTransactionData();
         } else {
             $this->validate('token', 'billingAddress1', 'billingPostcode');
             // the "token" should be a previously successful XactID

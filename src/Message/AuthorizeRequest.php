@@ -37,7 +37,7 @@ class AuthorizeRequest extends AbstractRequest
                 'Total' => $this->getAmount(),
             ],
             $this->getAddressData(),
-            $this->getCreditCardData()
+            $this->getCreditCardTransactionData()
         );
     }
 }

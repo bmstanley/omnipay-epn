@@ -39,7 +39,7 @@ class UpdateCardRequest extends AbstractRequest
                 'Action' => $this->action,
                 'RecordType' => 'C',
             ],
-            $this->getCreditCardData()
+            $this->getCreditCardRegistrationData()
         );
     }
 }
