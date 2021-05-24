@@ -35,8 +35,9 @@ class UpdateCardRequest extends AbstractRequest
         return array_merge(
             [
                 'RequestType' => $this->requestType,
-                'Action' => $this->action,
                 'CustomerID' => $this->getCustomerId(),
+                'Action' => $this->action,
+                'RecordType' => 'C',
             ],
             $this->getCreditCardData()
         );
