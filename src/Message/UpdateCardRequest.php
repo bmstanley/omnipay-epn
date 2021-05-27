@@ -30,12 +30,13 @@ class UpdateCardRequest extends AbstractRequest
      */
     public function getData(): array
     {
-        $this->validate('card', 'customerId');
+        $this->validate('card', 'customerId', 'paymentId');
 
         return array_merge(
             [
                 'RequestType' => $this->requestType,
                 'CustomerID' => $this->getCustomerId(),
+                'PaymentID' => $this->getPaymentId(),
                 'Action' => $this->action,
                 'RecordType' => 'C',
             ],

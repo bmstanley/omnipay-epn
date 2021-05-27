@@ -107,14 +107,15 @@ class Response extends OmnipayAbstractResponse
         return $result[0]['CustomerID'] ?? null;
     }
 
-    public function getCardReference(): ?string
+    public function getPaymentReference(): ?string
+    {
+        $result = $this->getValue('result');
+        return $result[0]['PaymentID'] ?? null;
+    }
+
+    public function getPaymentToken(): ?string
     {
         $result = $this->getValue('result');
         return $result[0]['XactID'] ?? null;
-    }
-
-    public function getToken(): ?string
-    {
-        return $this->getCardReference();
     }
 }

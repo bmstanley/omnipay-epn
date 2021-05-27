@@ -2,6 +2,8 @@
 
 namespace Omnipay\eProcessingNetwork\Message\Concerns;
 
+use Omnipay\Common\Message\RequestInterface;
+
 trait HasCreditCardData
 {
     /**
@@ -41,5 +43,26 @@ trait HasCreditCardData
     protected function getCardYear(): string
     {
         return substr($this->getCard()->getExpiryYear(), -2, 2);
+    }
+
+    /**
+     * Get the request's payment ID.
+     *
+     * @return string|null
+     */
+    public function getPaymentId(): ?string
+    {
+        return $this->getParameter('paymentId');
+    }
+
+    /**
+     * Set the request's payment ID.
+     *
+     * @param string $paymentId
+     * @return \Omnipay\Common\Message\RequestInterface
+     */
+    public function setPaymentId(string $paymentId): RequestInterface
+    {
+        return $this->setParameter('paymentId', $paymentId);
     }
 }
