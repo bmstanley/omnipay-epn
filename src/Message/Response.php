@@ -94,7 +94,7 @@ class Response extends OmnipayAbstractResponse
 
     /**
      * @param mixed|null $key
-     * @return string|null
+     * @return mixed|null
      */
     protected function getValue(string $key)
     {
@@ -125,7 +125,7 @@ class Response extends OmnipayAbstractResponse
     public function getPaymentReference(): ?string
     {
         $result = $this->getValue('result');
-        if (empty($this->request)) {
+        if (empty($result) || ! isset($result[0]['LastFour'])) {
             return null;
         }
 
@@ -134,8 +134,8 @@ class Response extends OmnipayAbstractResponse
             if (
                 substr($requestedCard->getNumber(), -4, 4) === $paymentMethod['LastFour']
                 && strcasecmp($requestedCard->getBrand(), $paymentMethod['CardType']) === 0
-                && str_pad($requestedCard->getCardMonth(), 2, '0', STR_PAD_LEFT) === $paymentMethod['ExpireMonth']
-                && substr($requestedCard->getCardYear(), -4, 4) === $paymentMethod['ExpireYear']
+                && substr($requestedCard->getExpiryYear(), -2, 2) === $paymentMethod['ExpireYear']
+                && str_pad(substr($requestedCard->getExpiryMonth(), -2, 2), 2, '0', STR_PAD_LEFT) === $paymentMethod['ExpireMonth']
             ) {
                 return $paymentMethod['PaymentID'];
             }
@@ -147,7 +147,7 @@ class Response extends OmnipayAbstractResponse
     public function getPaymentToken(): ?string
     {
         $result = $this->getValue('result');
-        if (empty($this->request)) {
+        if (empty($result) || ! isset($result[0]['LastFour'])) {
             return null;
         }
 
@@ -156,8 +156,8 @@ class Response extends OmnipayAbstractResponse
             if (
                 substr($requestedCard->getNumber(), -4, 4) === $paymentMethod['LastFour']
                 && strcasecmp($requestedCard->getBrand(), $paymentMethod['CardType']) === 0
-                && str_pad($requestedCard->getCardMonth(), 2, '0', STR_PAD_LEFT) === $paymentMethod['ExpireMonth']
-                && substr($requestedCard->getCardYear(), -4, 4) === $paymentMethod['ExpireYear']
+                && substr($requestedCard->getExpiryYear(), -2, 2) === $paymentMethod['ExpireYear']
+                && str_pad(substr($requestedCard->getExpiryMonth(), -2, 2), 2, '0', STR_PAD_LEFT) === $paymentMethod['ExpireMonth']
             ) {
                 return $paymentMethod['XactID'];
             }
