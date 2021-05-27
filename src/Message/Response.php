@@ -110,12 +110,44 @@ class Response extends OmnipayAbstractResponse
     public function getPaymentReference(): ?string
     {
         $result = $this->getValue('result');
-        return $result[0]['PaymentID'] ?? null;
+        if (empty($this->request)) {
+            return null;
+        }
+
+        $requestedCard = $this->request->getCard();
+        foreach ($result as $paymentMethod) {
+            if (
+                substr($requestedCard->getNumber(), -4, 4) === $paymentMethod['LastFour']
+                && strcasecmp($requestedCard->getBrand(), $paymentMethod['CardType']) === 0
+                && str_pad($requestedCard->getCardMonth(), 2, '0', STR_PAD_LEFT) === $paymentMethod['ExpireMonth']
+                && substr($requestedCard->getCardYear(), -4, 4) === $paymentMethod['ExpireYear']
+            ) {
+                return $paymentMethod['PaymentID'];
+            }
+        }
+
+        return null;
     }
 
     public function getPaymentToken(): ?string
     {
         $result = $this->getValue('result');
-        return $result[0]['XactID'] ?? null;
+        if (empty($this->request)) {
+            return null;
+        }
+
+        $requestedCard = $this->request->getCard();
+        foreach ($result as $paymentMethod) {
+            if (
+                substr($requestedCard->getNumber(), -4, 4) === $paymentMethod['LastFour']
+                && strcasecmp($requestedCard->getBrand(), $paymentMethod['CardType']) === 0
+                && str_pad($requestedCard->getCardMonth(), 2, '0', STR_PAD_LEFT) === $paymentMethod['ExpireMonth']
+                && substr($requestedCard->getCardYear(), -4, 4) === $paymentMethod['ExpireYear']
+            ) {
+                return $paymentMethod['XactID'];
+            }
+        }
+
+        return null;
     }
 }
