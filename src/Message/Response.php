@@ -104,7 +104,22 @@ class Response extends OmnipayAbstractResponse
     public function getCustomerReference(): ?string
     {
         $result = $this->getValue('result');
-        return $result[0]['CustomerID'] ?? null;
+        if (empty($this->request) || ! method_exists('getCustomerName', $this->request)) {
+            return null;
+        }
+
+        foreach ($result as $customer) {
+            if (
+                $this->request->getCustomerName() === $customer['Name']
+                && $this->request->getCustomerEmail() === $customer['Email']
+                && $this->request->getCustomerPhone() === $customer['Phone']
+                && $this->request->getCustomerLocalIdentifier() === $customer['Identifier']
+            ) {
+                return $customer['CustomerID'];
+            }
+        }
+
+        return null;
     }
 
     public function getPaymentReference(): ?string
