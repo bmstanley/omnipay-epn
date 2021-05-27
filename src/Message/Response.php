@@ -104,7 +104,7 @@ class Response extends OmnipayAbstractResponse
     public function getCustomerReference(): ?string
     {
         $result = $this->getValue('result');
-        if (empty($this->request) || ! method_exists('getCustomerName', $this->request)) {
+        if (empty($this->request) || ! method_exists($this->request, 'getCustomerName')) {
             return null;
         }
 
