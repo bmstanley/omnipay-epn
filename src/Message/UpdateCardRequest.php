@@ -55,10 +55,10 @@ class UpdateCardRequest extends AbstractRequest
                 [
                     'RecordType' => 'C',
                     'CardType' => $this->getCard()->getBrand(),
-                    'CustomerID' => 99,
+                    'CustomerID' => $this->getCustomerId(),
                     'AddressID' => '',
                     'XactID' => '20210705091537-0421161-341',
-                    'PaymentID' => '111',
+                    'PaymentID' => $this->getPaymentId(),
                     'ExpireYear' => substr($this->getCard()->getExpiryYear(), -2, 2),
                     'ExpireMonth' => substr(str_pad($this->getCard()->getExpiryYear(), 2, '0', STR_PAD_LEFT), -2, 2),
                     'LastFour' => $this->getCard()->getNumberLastFour(),
