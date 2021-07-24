@@ -54,14 +54,14 @@ class UpdateCardRequest extends AbstractRequest
             'result' => [
                 [
                     'RecordType' => 'C',
-                    'CardType' => 'Visa',
+                    'CardType' => $this->getCard()->getBrand(),
                     'CustomerID' => 99,
                     'AddressID' => '',
                     'XactID' => '20210705091537-0421161-341',
                     'PaymentID' => '111',
-                    'ExpireYear' => '26',
-                    'ExpireMonth' => '03',
-                    'LastFour' => '0000',
+                    'ExpireYear' => substr($this->getCard()->getExpiryYear(), -2, 2),
+                    'ExpireMonth' => substr(str_pad($this->getCard()->getExpiryYear(), 2, '0', STR_PAD_LEFT), -2, 2),
+                    'LastFour' => $this->getCard()->getNumberLastFour(),
                     'CustomerType' => 'P',
                     'BillingAddress' => '',
                 ],
