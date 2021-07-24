@@ -54,7 +54,7 @@ class CreateCardRequest extends AbstractRequest
                     'AddressID' => '1',
                     'RecordType' => 'C',
                     'PaymentID' => '113',
-                    'ExpireMonth' => substr(str_pad($this->getCard()->getExpiryYear(), 2, '0', STR_PAD_LEFT), -2, 2),
+                    'ExpireMonth' => substr(str_pad($this->getCard()->getExpiryMonth(), 2, '0', STR_PAD_LEFT), -2, 2),
                     'BillingAddress' => null,
                     'CustomerID' => 8,
                     'CardType' => $this->getCard()->getBrand(),

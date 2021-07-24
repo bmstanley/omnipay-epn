@@ -60,7 +60,7 @@ class UpdateCardRequest extends AbstractRequest
                     'XactID' => '20210705091537-0421161-341',
                     'PaymentID' => $this->getPaymentId(),
                     'ExpireYear' => substr($this->getCard()->getExpiryYear(), -2, 2),
-                    'ExpireMonth' => substr(str_pad($this->getCard()->getExpiryYear(), 2, '0', STR_PAD_LEFT), -2, 2),
+                    'ExpireMonth' => substr(str_pad($this->getCard()->getExpiryMonth(), 2, '0', STR_PAD_LEFT), -2, 2),
                     'LastFour' => $this->getCard()->getNumberLastFour(),
                     'CustomerType' => 'P',
                     'BillingAddress' => '',
