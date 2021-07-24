@@ -2,10 +2,8 @@
 
 namespace Omnipay\eProcessingNetwork\Message;
 
-use Omnipay\Common\Message\RequestInterface;
 use Omnipay\eProcessingNetwork\Message\Concerns\HasCreditCardData;
 use Omnipay\eProcessingNetwork\Message\Concerns\HasCustomerData;
-use Omnipay\eProcessingNetwork\Message\Concerns\HasSubscriptionData;
 
 class UpdateCardRequest extends AbstractRequest
 {
@@ -42,5 +40,32 @@ class UpdateCardRequest extends AbstractRequest
             ],
             $this->getCreditCardRegistrationData()
         );
+    }
+
+    public function getTestResponseData(): array
+    {
+        return [
+            'action' => 'List',
+            'pageCount' => 1,
+            'currentPage' => 1,
+            'status' => 1,
+            'refId' => '',
+            'resultCount' => 1,
+            'result' => [
+                [
+                    'RecordType' => 'C',
+                    'CardType' => 'Visa',
+                    'CustomerID' => 99,
+                    'AddressID' => '',
+                    'XactID' => '20210705091537-0421161-341',
+                    'PaymentID' => '111',
+                    'ExpireYear' => '26',
+                    'ExpireMonth' => '03',
+                    'LastFour' => '0000',
+                    'CustomerType' => 'P',
+                    'BillingAddress' => '',
+                ],
+            ],
+        ];
     }
 }

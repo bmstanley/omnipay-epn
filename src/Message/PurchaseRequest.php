@@ -2,7 +2,6 @@
 
 namespace Omnipay\eProcessingNetwork\Message;
 
-use Omnipay\Common\Message\RequestInterface;
 use Omnipay\eProcessingNetwork\Message\Concerns\HasAddressData;
 use Omnipay\eProcessingNetwork\Message\Concerns\HasCreditCardData;
 
@@ -36,7 +35,7 @@ class PurchaseRequest extends AbstractRequest
             $paymentMethod = $this->getCreditCardTransactionData();
         } else {
             $this->validate('token', 'billingAddress1', 'billingPostcode');
-            // the "token" should be a previously successful XactID
+            // the 'token' should be a previously successful XactID
             // from calling $response->getTransactionId()
             $paymentMethod = ['TransID' => $this->getToken()];
         }
@@ -50,5 +49,44 @@ class PurchaseRequest extends AbstractRequest
             $this->getAddressData(),
             $paymentMethod
         );
+    }
+
+    public function getTestResponseData(): array
+    {
+        $amount = (float)$this->getAmount();
+        if ($amount === 2.01) {
+            return [
+                'CVV2Text' => 'CVV2 Match (M)',
+                'AVSText' => 'AVS Match 9 Digit Zip and Address (X)',
+                'CVV2Code' => 'M',
+                'RespText' => 'DECLINED',
+                'Tran_token' => 'DFDDFE7E-6C69-1014-9E9F-F42C44BE5CE2',
+                'Success' => 'N',
+                'XactID' => '20210502073456-1234567-12-0',
+                'Invoice' => '12',
+                'AVSCode' => 'X',
+            ];
+        }
+
+        if ($amount === 2.011) {
+            return [
+                'APIStatus' => '400 Bad Request',
+                'Success' => 'U',
+                'RespText' => 'Invalid Total Amount. Error (007)',
+            ];
+        }
+
+        return [
+            'AVSText' => 'AVS Match 9 Digit Zip and Address (X)',
+            'CVV2Code' => 'M',
+            'AVSCode' => 'X',
+            'Invoice' => '11',
+            'XactID' => '20210502072836-1234567-11',
+            'Tran_token' => 'A886E4D0-6C69-1014-9F14-E3436113A1D0',
+            'Success' => 'Y',
+            'RespText' => 'APPROVED 311004',
+            'CVV2Text' => 'CVV2 Match (M)',
+            'AuthCode' => '3110044',
+        ];
     }
 }

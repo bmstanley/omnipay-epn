@@ -21,8 +21,7 @@ use Omnipay\eProcessingNetwork\Message\VoidRequest;
 /**
  * eProcessingNetwork Driver for Omnipay
  *
- * This driver is based on
- * eProcessingNetwork TDBE API documentation
+ * This driver is based on the eProcessingNetwork TDBE API documentation
  *
  * @link https://www.eprocessingnetwork.com/tdbe_doc.html
  */
@@ -85,33 +84,6 @@ class Gateway extends AbstractGateway
     public function void(array $options = []): RequestInterface
     {
         return $this->createRequest(VoidRequest::class, $options);
-    }
-
-    /**
-     * @param array $options
-     * @return \Omnipay\Common\Message\RequestInterface
-     */
-    public function createSubscription(array $options = []): RequestInterface
-    {
-        return $this->createRequest(CreateSubscriptionRequest::class, $options);
-    }
-
-    /**
-     * @param array $options
-     * @return \Omnipay\Common\Message\RequestInterface
-     */
-    public function cancelSubscription(array $options = []): RequestInterface
-    {
-        return $this->createRequest(CancelSubscriptionRequest::class, $options);
-    }
-
-    /**
-     * @param array $options
-     * @return \Omnipay\Common\Message\RequestInterface
-     */
-    public function getSubscriptionStatus(array $options = []): RequestInterface
-    {
-        return $this->createRequest(GetSubscriptionStatusRequest::class, $options);
     }
 
     /**
