@@ -17,6 +17,10 @@ class Response extends OmnipayAbstractResponse
 
     protected function getErrorMessage(): string
     {
+        if ($this->getValue('error')) {
+            return $this->getValue('error');
+        }
+
         $responseText = $this->getValue('RespText');
         switch ($responseText) {
             case 'Amount Error':
