@@ -1,0 +1,33 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 02 May 2021 12:28:37 GMT
+Content-Type: application/json; charset=ISO-8859-1
+Expires: Sun, 02 May 2021 12:28:37 GMT
+X-Xss-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Content-Length: 331
+
+{
+    "status": 1,
+    "result": [
+        {
+            "Addresses": [],
+            "Email": "test.mctester@email.com",
+            "Name": "Test McTester",
+            "RecordType": "Customer",
+            "Description": "",
+            "DefaultPaymentID": "",
+            "CustomerID": "100",
+            "Identifier": "ABC-1234",
+            "Payments": [],
+            "Phone": "555-555-5555",
+            "DefaultPayment": "None"
+        }
+    ],
+    "currentPage": 1,
+    "resultCount": 1,
+    "pageCount": 1,
+    "refId": "",
+    "action": "List"
+}

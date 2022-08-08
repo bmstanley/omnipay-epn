@@ -1,0 +1,33 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sat, 24 Jul 2021 15:06:55 GMT
+Content-Type: application/json; charset=ISO-8859-1
+Expires: Sat, 24 Jul 2021 15:06:55 GMT
+X-Xss-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Content-Length: 318
+
+{
+    "status": 1,
+    "refId": "",
+    "pageCount": 1,
+    "action": "List",
+    "result": [
+        {
+            "CustomerType": "P",
+            "AddressID": "1",
+            "RecordType": "C",
+            "PaymentID": "113",
+            "ExpireMonth": "03",
+            "BillingAddress": null,
+            "CustomerID": 8,
+            "CardType": "Visa",
+            "LastFour": "1111",
+            "ExpireYear": "24",
+            "XactID": "20210724101607-0421161-345"
+        }
+    ],
+    "resultCount": 1,
+    "currentPage": 1
+}

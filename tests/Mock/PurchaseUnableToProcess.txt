@@ -1,0 +1,15 @@
+HTTP/1.1 200 OK
+Server: nginx
+Date: Sun, 02 May 2021 12:28:37 GMT
+Content-Type: application/json; charset=ISO-8859-1
+Expires: Sun, 02 May 2021 12:28:37 GMT
+X-Xss-Protection: 1; mode=block
+X-Frame-Options: SAMEORIGIN
+Strict-Transport-Security: max-age=31536000; includeSubDomains
+Content-Length: 92
+
+{
+    "APIStatus": "400 Bad Request",
+    "Success": "U",
+    "RespText": "Invalid Total Amount. Error (007)"
+}
